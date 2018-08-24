@@ -2,7 +2,7 @@
 - name: Exercise 2
   hosts: containers
   tasks:
-  - name: Save Host Info in Desktop
+  - name: Register hostname in Var
     local_action: command hostname
     register: hostname
 
@@ -15,7 +15,7 @@
       group: root
       mode: 0777
 
-  - name: template test
+  - name: Update application file from index.html.j2 template
     template: 
       src=./template/index.html.j2
       dest=/usr/share/nginx/html/index.html

@@ -26,6 +26,6 @@ You should see your python is running in Virtaul environment, which seperate fro
 
 ### Install Ansible
 ```sh
-pip install ansible
+pip install -r requirements.txt
 ansible --version
 ```

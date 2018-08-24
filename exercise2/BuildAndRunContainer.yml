@@ -2,21 +2,21 @@
 - name: Exercise 2
   hosts: local
   tasks:
-  - name: Save Host Info in Desktop
+  - name: Register hostname in Var
     local_action: command hostname
     register: hostname
 
   - debug: msg={{ hostname.stdout }}
 
-  - name: Build image and with buildargs
+  - name: Build image from dockerfile directory
     docker_image:
       path: ./sshDocker
-      name: testsshimage
+      name: playbooksshimage
 
-  - name: Create a data container
+  - name: Create a container which have sshd and nginx
     docker_container:
-      name: testssh
-      image: testsshimage
+      name: playbookssh
+      image: playbooksshimage
       ports:
         - "10080:80"
         - "10022:22"
