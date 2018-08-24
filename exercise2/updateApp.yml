@@ -1,0 +1,21 @@
+---
+- name: Exercise 2
+  hosts: containers
+  tasks:
+  - name: Save Host Info in Desktop
+    local_action: command hostname
+    register: hostname
+
+  - debug: msg={{ hostname.stdout }}
+
+  - file:
+      path: /usr/share/nginx/html
+      state: directory
+      owner: root
+      group: root
+      mode: 0777
+
+  - name: template test
+    template: 
+      src=./template/index.html.j2
+      dest=/usr/share/nginx/html/index.html
