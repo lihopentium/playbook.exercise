@@ -1,0 +1,7 @@
+[all]
+
+[local]
+localhost ansible_connection=local ansible_host=127.0.0.1 ansible_python_interpreter="{{ ansible_playbook_python }}"
+
+[containers]
+sshContainer ansible_host=127.0.0.1 ansible_port=10022 ansible_user=root ansible_ssh_pass="123456" 

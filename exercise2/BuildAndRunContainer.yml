@@ -1,0 +1,22 @@
+---
+- name: Exercise 2
+  hosts: local
+  tasks:
+  - name: Save Host Info in Desktop
+    local_action: command hostname
+    register: hostname
+
+  - debug: msg={{ hostname.stdout }}
+
+  - name: Build image and with buildargs
+    docker_image:
+      path: ./sshDocker
+      name: testsshimage
+
+  - name: Create a data container
+    docker_container:
+      name: testssh
+      image: testsshimage
+      ports:
+        - "10080:80"
+        - "10022:22"

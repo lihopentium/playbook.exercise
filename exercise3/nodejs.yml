@@ -1,0 +1,6 @@
+---
+- name: Exercise 3
+
+- hosts: utility
+  roles:
+    - geerlingguy.nodejs
